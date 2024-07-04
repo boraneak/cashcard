@@ -26,9 +26,8 @@ class CashCardJsonTest {
                "amount":193.45
            }
            """;
-        assertThat(json.parse(expected))
-                .isEqualTo(new CashCard(91L, 123.45));
-        assertThat(json.parseObject(expected).id()).isEqualTo(99);
-        assertThat(json.parseObject(expected).amount()).isEqualTo(183.45);
+        assertThat(json.parse(expected)).isEqualTo(new CashCard(79L, 193.45));
+        assertThat(json.parseObject(expected).id()).isEqualTo(79);
+        assertThat(json.parseObject(expected).amount()).isEqualTo(193.45);
     }
 }
