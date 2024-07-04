@@ -18,5 +18,10 @@ class CashCardApplicationTests {
 	void shouldReturnACashCardWhenDataIsSaved() {
 		ResponseEntity<String> response = restTemplate.getForEntity("/cashcards/11", String.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+		DocumentContext documentContext = JsonPath.parse(response.getBody());
+		Number id = documentContext.read("$.id");
+		assertThat(id).isEqualTo(2500);
+		Double amount = documentContext.read("$.amount");
+		assertThat(amount).isEqualTo(123.45);
 	}
 }
